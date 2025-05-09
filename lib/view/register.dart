@@ -32,6 +32,12 @@ class _RegisterState extends State<Register> {
       );
       return;
     }
+    if (!RegExp(r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+').hasMatch(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Email inválido')),
+      );
+      return;
+    }
 
     User.createUser(name, email, password);
       
